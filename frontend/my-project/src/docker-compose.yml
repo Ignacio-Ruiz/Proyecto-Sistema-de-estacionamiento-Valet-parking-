@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/C:\Users\soy_i\Documents\GitHub\Proyecto-Sistema-de-estacionamiento-Valet-parking-/data/db
+
+  mongo-express:
+    image: mongo-express:0.
+    container_name: mongo-express
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    enviroment:
+      MONGO_INITDB_ROOT_USERNAME: 
+      
