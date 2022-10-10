@@ -1,17 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img src="./assets/logo.png" alt="" width="350" height="100" />
+  
+  <div>
+   
+    <p><label> cantidad de espacios {{autos}}</label></p>
+
+  </div>
+
+       
+  <form action="procesar" method="post" >
+
+    ingrese rut:
+    <input type="text" id="rut"  required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej:20846553-8">
+      <br>  
+   
+ 
+
+<p>Nombre: <input type="text" name="nombre" required nombre="a" placeholder="Ejemplo:Jhon"></p>
+
+<p>Apellido: <input type="text" name="apellido" required apellido="a" placeholder="Ejemplo:kaios"></p>
+
+<p>
+
+  Ingrese su patente:
+      <input type="text" id="patente" required pattern="[A-Za-z-Az]{4}[0-9]{2}" placeholder="BBBB10">
+      <br> 
+</p>
+
+<p>
+
+  <input type="submit" value="confirmar">
+
+</p>
+
+</form>
+
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+
+import {ref} from 'vue'
+let autos = ref(10)
+
+
+
+
 </script>
 
 <style>
