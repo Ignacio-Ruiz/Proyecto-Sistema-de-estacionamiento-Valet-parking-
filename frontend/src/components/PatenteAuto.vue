@@ -66,7 +66,8 @@ window.onload = function() {
             //poner siempre 2 cifras en los números		 
          if (cs<10) {cs="0"+cs;} 
          if (sg<10) {sg="0"+sg;} 
-         if (mn<10) {mn="0"+mn;} 
+         if (mn<10) {mn="0"+mn;}
+         if (ho<10) {ho="0"+ho;} 
             //llevar resultado al visor.		 
          visor.innerHTML=ho+" "+mn+" "+sg+" "+cs; 
          } 

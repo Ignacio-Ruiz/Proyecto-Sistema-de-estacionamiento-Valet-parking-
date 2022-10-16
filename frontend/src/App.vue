@@ -3,6 +3,7 @@
   
   <div>
    <h4><label> cantidad de espacios {{autos}}</label></h4>
+   <h4><label> cantidad de disponible {{}}</label></h4>
 
   </div>
 
@@ -40,12 +41,9 @@
         class="btn btn-primary">confirmar </button>
       </div>
     </form>
-        <button type="button" value="confirmar" name="confirmar"  @click='cal' 
-        class="btn btn-primary">confirmar </button>
-    
   </div>
 </div>
-
+<InfoForm></InfoForm>
 <PatenteAuto></PatenteAuto>
 
 
@@ -55,18 +53,14 @@
 
 //import { ref} from 'vue'
 import PatenteAuto from './components/PatenteAuto.vue'
+import InfoForm from './components/InfoForm.vue'
 
-import axios from 'axios'
+//import axios from 'axios'
 
 let autos = 10;
 
-let cal = function(){
-autos.value=autos.value-1
 
-}
-
-
-let calcular = function(){
+/*let calcular = function(){
     axios
     .post('http://localhost:3000/formulario', {'autos': autos.value})
     .then(response => {
@@ -74,7 +68,7 @@ let calcular = function(){
     })
 
   }
-
+*/
 </script>
 
 
