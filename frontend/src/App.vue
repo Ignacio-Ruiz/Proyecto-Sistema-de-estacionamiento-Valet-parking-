@@ -8,55 +8,78 @@
 
   <div class="container" >
   <div class="abs-center">
-    <form action="#" class="border p-5 form"  target="_blank" method="get">
+    <form name="formulario " action="/formulario"
+     class="border p-5 form"  target="_blank" method="post">
       <div class="form-group ">
         Ingrese rut:
-        <input type="text" name="rut" id="rut"  
+        <input type="text" name="rut" id="rut"  v-model="rut"
         required pattern="[0-9]{8}[-]{1}[0-9-k]{1}"
          placeholder="ej:20846553-8 " class="form-control">
       </div>
 
       <div class="form-group">
         Nombre:
-         <input type="text" name="nombre" id="nombre"
+         <input type="text" name="nombre" id="nombre" v-model="nombre"
         required nombre="a" placeholder="Ejemplo:Jhon" class="form-control">
       </div>
 
       <div class="form-group">
         Ingrese su apellido
-        <input type="text" name="apellido" id="apellido"
+        <input type="text" name="apellido" id="apellido" v-model="apellido"
         required apellido="a" placeholder="Ejemplo:kaios" class="form-control">
       </div>
 
       <div class="form-group">
         Ingrese su patente:
-          <input type="text" name="patente" id="patente"
+          <input type="text" name="patente" id="patente" v-model="patente"
           required pattern="[A-Za-z-Az]{4}[0-9]{2}" placeholder="BBBB10" class="form-control">
       </div>
 
       <div>
-        <button type="submit" value="confirmar" class="btn btn-primary">confirmar </button>
+        <button type="submit" value="confirmar" name="confirmar"  @click='calcular' 
+        class="btn btn-primary">confirmar </button>
       </div>
     </form>
+        <button type="button" value="confirmar" name="confirmar"  @click='cal' 
+        class="btn btn-primary">confirmar </button>
+    
   </div>
 </div>
-<PatenteAuto></PatenteAuto>
 
+<PatenteAuto></PatenteAuto>
 
 
 </template>
 
 <script setup>
 
-
-import {ref} from 'vue'
+//import { ref} from 'vue'
 import PatenteAuto from './components/PatenteAuto.vue'
 
+import axios from 'axios'
 
-let autos = ref(10)
+let autos = 10;
 
+let cal = function(){
+autos.value=autos.value-1
+
+}
+
+
+let calcular = function(){
+    axios
+    .post('http://localhost:3000/formulario', {'autos': autos.value})
+    .then(response => {
+      autos.value = response.data.autos
+    })
+
+  }
 
 </script>
+
+
+
+
 
 <style>
 #app {
