@@ -51,25 +51,26 @@
 
 <script setup>
 
-//import { ref} from 'vue'
-import PatenteAuto from './components/PatenteAuto.vue'
-import InfoForm from './components/InfoForm.vue'
+  //import { ref} from 'vue'
+  import PatenteAuto from './components/PatenteAuto.vue'
+  import InfoForm from './components/InfoForm.vue'
 
-//import axios from 'axios'
+  //import axios from 'axios'
 
-let autos = 10;
+  let autos = 10;
 
-
-/*let calcular = function(){
+  /*
+  let calcular = function(){
     axios
-    .post('http://localhost:3000/formulario', {'autos': autos.value})
+    .get('http://localhost:3000/formulario', {'autos': autos.value})
     .then(response => {
       autos.value = response.data.autos
     })
 
   }
-*/
+  */
 </script>
+
 
 
 
