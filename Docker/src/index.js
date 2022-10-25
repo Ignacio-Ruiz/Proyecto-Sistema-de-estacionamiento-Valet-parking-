@@ -1,7 +1,7 @@
-const axios = require('axios');
+const express = require('express');
 
 //inicializaciones
-const app = axios();
+const app = express();
 
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
@@ -17,3 +17,5 @@ app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'));
 });
+
+// mongodb+srv://Register:<password>@cluster0.dhxdbpw.mongodb.net/?retryWrites=true&w=majority
