@@ -1,17 +1,12 @@
 var express = require('express');
 var router = express.Router();
-vc 
+ 
 router.post('/', function(req, res, _) {
-  let autos = req.body.system
-
-
- /* if (system == 'metric'){
-    imc = (weight)/((height/100)**2)
-  }else{
-    imc = (weight/height**2)*703
-  }
-*/
-  //res.status(200).json({imc: imc})
+  let system = req.body.system
+  let rut = req.body.rut
+  let nombre = req.body.nombre
+  let apellido = req.body.apellido
+  let patente = req.body.patente
+  res.status(200).json(rut, nombre, apellido, patente)
 });
-
 module.exports = router;
