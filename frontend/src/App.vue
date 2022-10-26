@@ -9,8 +9,7 @@
 
   <div class="container" >
   <div class="abs-center">
-    <form name="formulario " action="/formulario"
-     class="border p-5 form"  target="_blank" method="post">
+    <form name="formulario " action="/formulario" class="border p-5 form"  target="_blank" method="post">
       <div class="form-group ">
         Ingrese rut:
         <input type="text" name="rut" id="rut"  v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
@@ -57,7 +56,7 @@
   const patente = ref();
  
   let info = function(){
-    axios.post('http://localhost:3000/formulario', {'rut': rut.value, 'nombre': nombre.value, 'apellido': apellido.value, 'patente': patente.value})
+    axios.get('http://localhost:3000/formulario', {'rut': rut.value, 'nombre': nombre.value, 'apellido': apellido.value, 'patente': patente.value})
     .then(response => {
       formulario.value = response.data.formulario
     })
