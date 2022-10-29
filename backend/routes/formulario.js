@@ -7,6 +7,12 @@ router.post('/', function(req, res, _) {
   let nombre = req.body.nombre
   let apellido = req.body.apellido
   let patente = req.body.patente
-  res.status(200).json(rut, nombre, apellido, patente)
+  let autos =10
+  if (autos != 0) {
+    autos-1
+  }
+  res.status(200).json({rut:rut,nombre:nombre,apellido:apellido,patente:patente, autos:autos})
+
 });
+
 module.exports = router;
