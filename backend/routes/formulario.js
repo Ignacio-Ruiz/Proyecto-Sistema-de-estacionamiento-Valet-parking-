@@ -1,17 +1,26 @@
 var express = require('express');
 var router = express.Router();
-vc 
+ 
 router.post('/', function(req, res, _) {
-  let autos = req.body.system
+  let system = req.body.system
+  let rut = req.body.rut
+  let nombre = req.body.nombre
+  let apellido = req.body.apellido
+  let patente = req.body.patente
+  let autos =10
 
 
- /* if (system == 'metric'){
-    imc = (weight)/((height/100)**2)
-  }else{
-    imc = (weight/height**2)*703
+   if (autos != 0) {
+    autos=autos-1;
   }
-*/
-  //res.status(200).json({imc: imc})
+  if (autos==0) {
+
+    autos="No hay mas espacios";
+  }
+  
+  
+  res.status(200).json({rut:rut,nombre:nombre,apellido:apellido,patente:patente, autos:autos})
+
 });
 
 module.exports = router;
