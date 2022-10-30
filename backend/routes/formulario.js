@@ -8,9 +8,17 @@ router.post('/', function(req, res, _) {
   let apellido = req.body.apellido
   let patente = req.body.patente
   let autos =10
-  if (autos != 0) {
-    autos-1
+
+
+   if (autos != 0) {
+    autos=autos-1;
   }
+  if (autos==0) {
+
+    autos="No hay mas espacios";
+  }
+  
+  
   res.status(200).json({rut:rut,nombre:nombre,apellido:apellido,patente:patente, autos:autos})
 
 });

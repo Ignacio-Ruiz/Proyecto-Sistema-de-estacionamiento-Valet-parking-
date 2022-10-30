@@ -3,7 +3,7 @@
   
   <div>
    <h4><label> cantidad de espacios 10</label></h4>
-   <h4><label> cantidad de espacoios disponible {{autos}}</label></h4>
+   <h4><label> cantidad de espacios disponible {{autos}}</label></h4>
 
   </div>
 
@@ -12,28 +12,28 @@
     <form  action="#" name="cron">
       <div class="form-group ">
         Ingrese rut:
-        <input type="text" name="rut" id="rut"  v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
+        <input type="text"  id="rut"  v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
       </div>
 
       <div class="form-group">
         Nombre:
-        <input type="text" name="nombre" id="nombre" v-model="nombre"
+        <input type="text" id="nombre" v-model="nombre" 
         required nombre="a" placeholder="Ejemplo: Jhon" class="form-control">
       </div>
 
       <div class="form-group">
         Ingrese su apellido
-        <input type="text" name="apellido" id="apellido" v-model="apellido" required apellido="a" placeholder="Ejemplo: Gonzalez" class="form-control">
+        <input type="text" id="apellido" v-model="apellido" required apellido="a" placeholder="Ejemplo: Gonzalez" class="form-control">
       </div>
 
       <div class="form-group">
         Ingrese su patente:
-        <input type="text" name="patente" id="patente" v-model="patente" required pattern="[A-Za-z-Az]{4}[0-9]{2}" placeholder="BBBB10" class="form-control">
+        <input type="text"  id="patente" v-model="patente" required pattern="[A-Za-z-Az]{4}[0-9]{2}" placeholder="BBBB10" class="form-control">
       </div>
 
       <div id="cronometro" >
        
-          <button type="submit" @click='info' value="Empezar" name="boton1" class="btn btn-primary" >confirmar </button>
+          <button id="boton" type="submit" @click='info' value="Empezar" name="boton1" class="btn btn-primary" >confirmar </button>
          
           
           
@@ -59,6 +59,7 @@
     <h5><label id="nomconf"> Su nombre es: {{nombre1}}</label></h5>
     <h5><label id="apconf"> Su apellido es: {{apellido1}}</label></h5>
     <h5><label id="patconf"> Su patente es: {{patente1}}</label></h5>
+
     <h5>
     <div id="reloj1">
     Su precio actual es       
@@ -72,8 +73,6 @@
     </h5>
 
     
-    
-  
 
     <form name="cron1">
     <div  id="cronometro">
@@ -81,10 +80,14 @@
     </div>
     </form>
     <br />
-   
+
+
+    
+
 </template>
 
 <script setup>
+
   import {ref} from 'vue'
   import axios from 'axios'
   //import PatenteAuto from './components/PatenteAuto.vue'
@@ -94,15 +97,16 @@
   const nombre1 = ref();
   const apellido1 = ref();
   const patente1 = ref();
-  const rut = ref();
-  const nombre = ref();
-  const apellido = ref();
-  const patente = ref();
-  let autos;
+  let rut = ref();
+  let nombre = ref();
+  let apellido = ref();
+  let patente = ref();
+  let autos = ref();
+
+
  
   let info = function(){
-    axios.post('http://localhost:3000/formulario', {'rut': rut.value, 'nombre': nombre.value, 
-    'apellido': apellido.value, 'patente': patente.value})
+    axios.post('http://localhost:3000/formulario', {'rut': rut.value, 'nombre': nombre.value, 'apellido': apellido.value, 'patente': patente.value})
     .then(response => {
       rut1.value = response.data.rut
       nombre1.value = response.data.nombre
@@ -115,18 +119,14 @@
 
 
 
-let visor;
-let visor1;
-let visor2;
+let visor,visor1,visor2;
 var cro=0;
 let actual;
 let elcrono;
 let emp;
 let cr;
 let cs;
-let sg;
-let mn;
-let ho;
+let sg,mn,ho;
 let precio;
 let tiempoMi;
 
@@ -140,14 +140,16 @@ window.onload = function() {
     //asociar eventos a botones: al pulsar el bot�n se activa su funci�n.
     document.cron.boton1.onclick = activo; 
     document.cron1.boton2.onclick = pausa;
-    
-    }
+}
+
+
     
     //bot�n Empezar 
     function activo (){   
          if (document.cron.boton1.value=="Empezar") { //bot�n en "Empezar"
          emp=new Date() //fecha inicial (en el momento de pulsar)
          elcrono=setInterval(tiempo,10); //funci�n del temporizador.
+         document.getElementById('boton').disabled=true;
   
             }
          }
@@ -162,6 +164,7 @@ window.onload = function() {
 
     //funci�n del temporizador			
     function tiempo() { 
+      
         
          actual=new Date(); //fecha a cada instante
             //tiempo del crono (cro) = fecha instante (actual) - fecha inicial (emp)
@@ -181,9 +184,10 @@ window.onload = function() {
          if (mn<10) {mn="0"+mn;}
          if (ho<10) {ho="0"+ho;} 
             //llevar resultado al visor.		 
-         visor.innerHTML=ho+" "+mn+" "+sg+" "+cs;
+         
          precio=(ho*60)*20+(mn*20);
          tiempoMi=(ho*60)+(mn*1);
+         
          visor.innerHTML=ho+" "+mn+" "+sg;
 
          visor1.innerHTML="Su precio actual es "+precio;
@@ -191,7 +195,6 @@ window.onload = function() {
 
 
          } 
-
 
 </script>
 
