@@ -43,24 +43,41 @@
 </div><br />
 
   </div>
+      
 
 
-  <h5>
+
+    <div class="container">
+
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">rut</th>
+      <th scope="col">nombre</th>
+      <th scope="col">apellido</th>
+      <th scope="col">patente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>{{rut1}}</td>
+      <td>{{nombre1}}</td>
+      <td>{{apellido1}}</td>
+      <td>{{patente1}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h5>
     Su tiempo es:
     <div id="reloj">
     
-    00 00 00
-   
-          
+    00 00 00   
  </div>
-  </h5>
 
-    <h5><label id="rutconf">Su rut es: {{rut1}}</label></h5>
-    <h5><label id="nomconf"> Su nombre es: {{nombre1}}</label></h5>
-    <h5><label id="apconf"> Su apellido es: {{apellido1}}</label></h5>
-    <h5><label id="patconf"> Su patente es: {{patente1}}</label></h5>
-
-    <h5>
     <div id="reloj1">
     Su precio actual es       
     </div>
@@ -70,9 +87,11 @@
     <div id="reloj2">
       Minutos transcurridos      
     </div>
-    </h5>
-
+      </h5>
     
+
+
+    </div>
 
     <form name="cron1">
     <div  id="cronometro">
