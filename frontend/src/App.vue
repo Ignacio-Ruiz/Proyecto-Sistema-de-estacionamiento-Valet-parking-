@@ -1,5 +1,5 @@
 <template>
-  <img src="./assets/logo.png" alt="" width="470" height="150" />
+  <img src="./assets/logo2.png" alt="" width="290" height="120" />
   
   <div>
    <h4><label> cantidad de espacios 10</label></h4>
@@ -7,9 +7,9 @@
 
   </div>
 
-  <div class="container" >
+  <div  class="container" >
   <div class="abs-center">
-    <form  action="#" name="cron">
+    <form  name="cron">
       <div class="form-group ">
         Ingrese rut:
         <input type="text"  id="rut"  v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
@@ -42,35 +42,44 @@
 
 </div><br />
 
-  </div>
+<h5>
+  <div class="container">
+  
+  <table class="table">
+<thead>
+<tr>
+  <th scope="col">#</th>
+  <th scope="col">rut</th>
+  <th scope="col">nombre</th>
+  <th scope="col">apellido</th>
+  <th scope="col">patente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+  <td>{{rut1}}</td>
+  <td>{{nombre1}}</td>
+  <td>{{apellido1}}</td>
+  <td>{{patente1}}</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</h5>
+
+
+
+</div>
+
       
 
 
 
-    <div class="container">
-
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">rut</th>
-      <th scope="col">nombre</th>
-      <th scope="col">apellido</th>
-      <th scope="col">patente</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>{{rut1}}</td>
-      <td>{{nombre1}}</td>
-      <td>{{apellido1}}</td>
-      <td>{{patente1}}</td>
-    </tr>
-  </tbody>
-</table>
-
-
+<div>
+  
 <h5>
     Su tiempo es:
     <div id="reloj">
@@ -223,8 +232,14 @@ window.onload = function() {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #222c35;
-  margin-top: 70px;
+  color: #ffffff;
+  
+
+  
+  background-image: url(./assets/fondo.jpg);
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
 }
 
 
@@ -239,5 +254,10 @@ window.onload = function() {
 }
 .form {
   width: 450px;
+}
+.table{
+
+  color: #ffffff;
+
 }
 </style>
