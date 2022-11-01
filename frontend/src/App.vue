@@ -9,7 +9,7 @@
 
   <div  class="container" >
   <div class="abs-center">
-    <form  name="cron">
+    <form  action="" name="cron">
       <div class="form-group ">
         Ingrese rut:
         <input type="text"  id="rut"  v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
@@ -65,19 +65,9 @@
 </tr>
 </tbody>
 </table>
-
 </div>
-
 </h5>
-
-
-
 </div>
-
-      
-
-
-
 <div>
   
 <h5>
@@ -108,9 +98,6 @@
     </div>
     </form>
     <br />
-
-
-    
 
 </template>
 
