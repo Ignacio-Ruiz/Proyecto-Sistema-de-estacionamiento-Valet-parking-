@@ -12,7 +12,7 @@
     <form  action="" name="cron">
       <div class="form-group ">
         Ingrese rut:
-        <input type="text"  id="rut"  v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
+        <input type="text"  id="rut"   v-model="rut" required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
       </div>
 
       <div class="form-group">
@@ -35,8 +35,6 @@
        
           <button id="boton" type="submit" @click='info' value="Empezar" name="boton1" class="btn btn-primary" >confirmar </button>
          
-          
-          
       </div>
     </form>
 
@@ -108,7 +106,7 @@
   //import PatenteAuto from './components/PatenteAuto.vue'
 
 
-  const rut1 = ref();
+  const rut1 = ref(" ");
   const nombre1 = ref();
   const apellido1 = ref();
   const patente1 = ref();
@@ -147,6 +145,7 @@ let tiempoMi;
 
 
 
+
 window.onload = function() {
 
     visor=document.getElementById("reloj"); //localizar pantalla del reloj
@@ -161,6 +160,8 @@ window.onload = function() {
     
     //bot�n Empezar 
     function activo (){   
+
+        
          if (document.cron.boton1.value=="Empezar") { //bot�n en "Empezar"
          emp=new Date() //fecha inicial (en el momento de pulsar)
          elcrono=setInterval(tiempo,10); //funci�n del temporizador.
