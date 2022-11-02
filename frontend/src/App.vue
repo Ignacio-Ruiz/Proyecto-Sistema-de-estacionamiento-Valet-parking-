@@ -2,8 +2,8 @@
   <img src="./assets/logo2.png" alt="" width="290" height="120" />
   
   <div>
-   <h4><label> cantidad de espacios 10</label></h4>
-   <h4><label> cantidad de espacios disponible {{autos}}</label></h4>
+   <h4><label> Total de espacios: 10</label></h4>
+   <h4><label> Cantidad de espacios disponibles: {{autos}}</label></h4>
 
   </div>
 
@@ -33,7 +33,7 @@
 
       <div id="cronometro" >
        
-          <button id="boton" type="submit" @click='info' value="Empezar" name="boton1" class="btn btn-primary" >confirmar </button>
+          <button id="boton" type="submit" @click='info' value="Empezar" name="boton1" class="btn btn-primary" >Confirmar y agregar usuario </button>
          
       </div>
     </form>
@@ -47,10 +47,10 @@
 <thead>
 <tr>
   <th scope="col">#</th>
-  <th scope="col">rut</th>
-  <th scope="col">nombre</th>
-  <th scope="col">apellido</th>
-  <th scope="col">patente</th>
+  <th scope="col">Rut</th>
+  <th scope="col">Nombre</th>
+  <th scope="col">Apellido</th>
+  <th scope="col">Patente</th>
 </tr>
 </thead>
 <tbody>
@@ -69,20 +69,20 @@
 <div>
   
 <h5>
-    Su tiempo es:
+    Time
     <div id="reloj">
     
     00 00 00   
  </div>
 
     <div id="reloj1">
-    Su precio actual es       
+    Precio por servicio      
     </div>
     </h5>
 
     <h5>
     <div id="reloj2">
-      Minutos transcurridos      
+      Minutos transcurridos     
     </div>
       </h5>
     
@@ -92,7 +92,7 @@
 
     <form name="cron1">
     <div  id="cronometro">
-    <button type="button" value="Parar" name="boton2" class="btn btn-primary" >Ya me voy </button>
+    <button type="button" value="Parar" name="boton2" class="btn btn-primary" >Stop </button>
     </div>
     </form>
     <br />
