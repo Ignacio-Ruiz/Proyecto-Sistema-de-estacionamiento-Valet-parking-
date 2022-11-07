@@ -37,9 +37,8 @@
     <form >
 
       <div class="form-group ">
-        Ingrese rut para eliminar:
-        <input type="text"  id="_id"     required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
-        <button type="button" class="btn btn-danger margen" v-on:click="eliminar()" >Eliminar</button>
+        Ingrese rut:
+        <input type="text"   required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
       </div>
 
     </form>
@@ -105,7 +104,6 @@ export default {
     data(){
         return {
             ListaUsuario:null,
-
         }
     },
 
@@ -115,20 +113,7 @@ export default {
           this.ListaUsuario= data.data;
             console.log(data);
         });
-    },
-    eliminar(){
-
-        axios.delete("http://localhost:3000/api/users/")
-        .then( datos => {
-            console.log(datos);
-        });
-
-      }
-
-      
-  
-
-
+    }
 }
 
 
