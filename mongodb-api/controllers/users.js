@@ -23,7 +23,9 @@ const User = require("../models/User");
   const addUser= (req, res) => {
   
     let user = new User({
-        rut: req.body.rut,
+
+    
+        _id: req.body._id,
       nombre: req.body.nombre,
       apellido: req.body.apellido,
       patente: req.body.patente
