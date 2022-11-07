@@ -62,11 +62,22 @@ data:function(){
 methods:{
     info(){
 
-      axios.post("http://localhost:3000/api/users/add",this.form)
+      if (this.form._id.required==false) {
+
+        console.log("esta vacio");  
+        
+      }
+      else{
+
+        axios.post("http://localhost:3000/api/users/add",this.form)
 
       .then(data =>{
             console.log(data);       
-       })          
+ })   
+        
+      }
+
+            
     }
 }
 

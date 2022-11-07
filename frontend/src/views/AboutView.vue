@@ -37,8 +37,20 @@
     <form >
 
       <div class="form-group ">
-        Ingrese rut:
-        <input type="text"   required pattern="[0-9]{8}[-]{1}[0-9-k]{1}" placeholder="ej: 20846553-8 " class="form-control">
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  </div>
+  <select  v-model="selected" class="custom-select" id="inputGroupSelect01">
+    <option disabled value="">Please select one</option>
+    <option v-for="usuario in ListaUsuario" :key="usuario._id"> {{usuario._id}}</option>
+    
+    </select>
+    <br>
+    <span>Selected: {{ selected }}</span>
+  
+</div>
+        <button type="button" class="btn btn-danger margen" @click="eliminar" >Eliminar</button>
       </div>
 
     </form>
@@ -98,11 +110,16 @@ Fecha2: <input id="time2" type="time" value="00:00"><br>
 
 
 
+
+
+
 import axios from 'axios';
 export default {
+
     name:"AboutForm",
     data(){
         return {
+          selected: '',
             ListaUsuario:null,
         }
     },
@@ -113,7 +130,23 @@ export default {
           this.ListaUsuario= data.data;
             console.log(data);
         });
+    },
+
+    methods:{
+
+      eliminar(){
+      
+      axios.delete("http://localhost:3000/api/users/"+this.selected)
+      .then( data => {
+          console.log(data);
+     
+      });
+
     }
+
+    }
+
+
 }
 
 
