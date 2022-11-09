@@ -48,7 +48,7 @@
     
     </select>
     <br>
-    <span>Selected: {{ selected }}</span>
+    <span>Va a eliminar al rut: {{ selected }}</span>
   
       </div>
         <button type="button"  class="btn btn-danger margen mx-3" @click="eliminar" >Eliminar</button>
@@ -71,7 +71,9 @@
 
 
 import axios from 'axios';
+
 export default {
+  
 
     name:"AboutForm",
     data(){
@@ -87,9 +89,11 @@ export default {
         axios.get(direccion).then( data =>{
           this.ListaUsuario= data.data;
             console.log(data);
-
+            
+         
             
         });
+      
     },
 
     methods:{

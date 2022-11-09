@@ -61,6 +61,7 @@
 import axios from 'axios'
 export default{
 
+
 name:"FormNue",
 
 
@@ -68,13 +69,13 @@ name:"FormNue",
 data:function(){
     return { 
         form:{
-
-            "_id" : "",
-            "nombre": "", 
-            "apellido" : "",
-            "patente":"",
-            "time":"",
-            "time1":"",
+              
+            "form._id" : "",
+            "form.nombre": "", 
+            "form.apellido" : "",
+            "form.patente":"",
+            "form.time":"",
+            "form.time1":"",
             
         }
     }
@@ -85,24 +86,21 @@ methods:{
   
     info(){
 
-      if (this.form._id=='') {
 
-        console.log("vacio"); 
-        
-      }
-      else{
-
-        axios.post("http://localhost:3000/api/users/add",this.form)
+      axios.post("http://localhost:3000/api/users/add",this.form)
       .then(data =>{
       console.log(data);      
         }) 
         
       }
 
+
+
+
   
 
       
-      }
+      
 
 }
 
