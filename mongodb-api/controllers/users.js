@@ -28,10 +28,12 @@ const User = require("../models/User");
         _id: req.body._id,
       nombre: req.body.nombre,
       apellido: req.body.apellido,
-      patente: req.body.patente
-      
-    });
+      patente: req.body.patente,
+      time: req.body.time,
+      time1: req.body.time1,
 
+    });
+ 
     user.save((err, usr) => {
         err && res.status(500).send(err.message);
         res.status(200).json(usr);

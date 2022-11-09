@@ -1,7 +1,7 @@
 <template>
   <img src="../assets/logo2.png" alt="" width="290" height="120" />
   
-  <div>
+  <div >
    <h4><label> Total de espacios: 10</label></h4>
    <h4><label> Cantidad de espacios disponibles: {{}} </label></h4>
 
@@ -12,7 +12,7 @@
     <form   name="cron">
       <div class="form-group ">
         Ingrese rut:
-        <input type="text"  id="_id"  v-model="form._id" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="ej: 20846553-8 " class="form-control">
+        <input type="text"  id="_id" v-model="form._id" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="ej: 20846553-8 " class="form-control">
       </div>
 
       <div class="form-group">
@@ -31,9 +31,22 @@
         <input type="text"  id="patente" v-model="form.patente" required pattern="[A-Za-z-A]{4}[0-9]{2}" placeholder="BBBB10" class="form-control">
       </div>
 
+
+        <div class="form-row">
+    <div class="col">
+      entrada
+      <input type="time" id="time" class="form-control" required v-model="form.time">
+    </div>
+    <div class="col">
+      salida
+      <input type="time" id="time1" class="form-control" required v-model="form.time1">
+    </div>
+  </div>
+  <br>
+      
       <div id="cronometro" >
        
-          <button   @click='info' class="btn btn-primary" >Confirmar y agregar usuario </button>
+          <button   @click='info' class="btn btn-primary" >reservar </button>
          
       </div>
     </form>
@@ -49,32 +62,48 @@ import axios from 'axios'
 export default{
 
 name:"FormNue",
+
+
+
 data:function(){
-    return {
+    return { 
         form:{
 
             "_id" : "",
             "nombre": "", 
             "apellido" : "",
             "patente":"",
-      
+            "time":"",
+            "time1":"",
+            
         }
     }
 },
 methods:{
+
+  
+  
     info(){
 
-   
-        axios.post("http://localhost:3000/api/users/add",this.form)
+      if (this.form._id=='') {
 
+        console.log("vacio"); 
+        
+      }
+      else{
+
+        axios.post("http://localhost:3000/api/users/add",this.form)
       .then(data =>{
-            console.log(data);       
- })   
+      console.log(data);      
+        }) 
         
       }
 
-            
-    
+  
+
+      
+      }
+
 }
 
 };
@@ -90,9 +119,9 @@ methods:{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #ffffff;
-  
-
-  
+  background-color: #182a3f;
+  min-height: 100vh;
+ 
   background-image: url(../assets/fondo.jpg);
   background-repeat: no-repeat;
   background-attachment:fixed;

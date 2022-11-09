@@ -7,6 +7,8 @@ const UserSchema = new Schema({
   nombre: { type: String },
   apellido: { type: String },
   patente: { type: String },
+  time: { type: String },
+  time1: { type: String },
  
   
  
