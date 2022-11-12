@@ -24,6 +24,7 @@
                         <td>{{ usuario.patente}}</td>
                         <td>{{ usuario.time}}</td>
                         <td>{{ usuario.time1}}</td>
+                        <td>{{ usuario.precio}}</td>
                        
                       
                     </tr>
@@ -52,7 +53,7 @@
   
       </div>
         <button type="button"  class="btn btn-danger margen mx-3" @click="eliminar" >Eliminar</button>
-        <button type="button" onclick="document.location.reload();"  class="btn btn-primary" >Precionar para aplicar cambios</button>
+        
       </div>
 
     </form>
@@ -105,6 +106,7 @@ export default {
           console.log(data);
      
       });
+      document.location.reload();
 
     }
 
