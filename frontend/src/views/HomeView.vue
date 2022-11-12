@@ -9,7 +9,7 @@
 
   <div  class="container" >
   <div class="abs-center">
-    <form   name="cron">
+    <form   >
       <div class="form-group ">
         Ingrese rut:
         <input type="text"  id="_id" v-model="form._id" required pattern="[0-9]{8}[-]{1}[0-9kK]{1}"
@@ -45,7 +45,7 @@
   </div>
   <br>
       
-      <div id="cronometro" >
+      <div  >
        
           <button   @click='info' class="btn btn-primary" >reservar </button>
          
@@ -59,32 +59,19 @@
 
 <script >
 
-
-
-
 import axios from 'axios'
-
-
-
 
 export default{
 
-
-
 name:"FormNue",
-
 
 data:function(){
     return { 
 
       autos:'',
-
-
         form:{
 
         }
-
-        
     }
 },
 methods:{
@@ -183,8 +170,6 @@ mounted:function(){
   background-attachment:fixed;
   background-size:cover;
 }
-
-
 
 .abs-center {
   display: flex;

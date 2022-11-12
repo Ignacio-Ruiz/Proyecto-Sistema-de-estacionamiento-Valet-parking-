@@ -49,10 +49,13 @@
     
     </select>
     <br>
-    <span>Va a eliminar al rut: {{ selected }}</span>
+    <h5>
+        <span class="margen mx-3"> Va a eliminar al rut: {{ selected }}</span>
+    </h5>
+  
   
       </div>
-        <button type="button"  class="btn btn-danger margen mx-3" @click="eliminar" >Eliminar</button>
+        <button type="button"  class="btn btn-danger " @click="eliminar" >Eliminar</button>
         
       </div>
 
@@ -65,11 +68,6 @@
 </template>
 
 <script >
-
-
-
-
-
 
 import axios from 'axios';
 
