@@ -2,9 +2,9 @@
   <img src="../assets/logo2.png" alt="" width="290" height="120" />
   
   <div >
-   <h4><label> Total de espacios: 10 {{}}</label></h4>
-
-
+   <h4>
+      <label> Espacios que quedan:{{Math.abs(autos-10)}}</label>
+  </h4>
   </div>
 
   <div  class="container" >
@@ -12,7 +12,8 @@
     <form   name="cron">
       <div class="form-group ">
         Ingrese rut:
-        <input type="text"  id="_id" v-model="form._id" required pattern="\d{8}-[\d|kK]{1}" placeholder="ej: 20846553-8 " class="form-control">
+        <input type="text"  id="_id" v-model="form._id" required pattern="[0-9]{8}[-]{1}[0-9kK]{1}"
+         placeholder="ej: 20846553-8 " title="Debe ser un Rut valido" class="form-control">
       </div>
 
       <div class="form-group">
@@ -75,6 +76,8 @@ name:"FormNue",
 
 data:function(){
     return { 
+
+      autos:'',
 
 
         form:{
@@ -151,21 +154,17 @@ methods:{
         
       } 
 
-}
-
-};
-
-
-
-let direccion = "http://localhost:3000/api/users/all" ;
+},
+mounted:function(){
+        let direccion = "http://localhost:3000/api/users/all" ;
         axios.get(direccion).then( data =>{
-            console.log(data.data);
-           //window.alert('actualmente hay '+data.data.length)
-            
-          });
-
-        
-
+            console.log(data);     
+            this.autos=data.data.length; 
+            console.log(this.autos);            
+                        
+        });
+      }
+} 
 
 </script>
 
