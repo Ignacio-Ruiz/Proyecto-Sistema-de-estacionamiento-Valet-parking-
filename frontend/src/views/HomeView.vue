@@ -36,11 +36,11 @@
         <div class="form-row">
     <div class="col">
       entrada
-      <input type="time" id="time1" class="form-control" required v-model="form.time">
+      <input type="time"  id="time1" class="form-control" required v-model="form.time">
     </div>
     <div class="col">
       salida
-      <input type="time" id="time2" class="form-control" required v-model="form.time1">
+      <input type="time" id="time2" max="23:59" class="form-control" required v-model="form.time1">
     </div>
   </div>
   <br>
@@ -82,12 +82,11 @@ methods:{
       let direccion = "http://localhost:3000/api/users/all" ;
         axios.get(direccion).then( data =>{
             console.log(data.data);
-            console.log('el largo es '+data.data.length)
-            //alert('actualmente hay '+data.data.length)
-
+            console.log('el largo es '+data.data.length);
+            //cuenta el array de datos
             if (data.data.length>=10) {
 
-              alert("El estacionamiento esta lleno")
+              alert("El estacionamiento esta lleno");
               
             }
             else{
@@ -100,7 +99,9 @@ methods:{
         
         var date1 = input1.valueAsDate;
         var date2 = input2.valueAsDate;
-        
+
+        var date3=date1;
+        console.log(date3);
         var s = (date2.getTime() - date1.getTime());
         
         var ms = s % 1000;
@@ -123,8 +124,9 @@ methods:{
 
         }
         this.form.precio=String(precio);
+        this.form.date3=String(date3);
 
-        console.log(this.form);      
+        console.log(date3);      
         
 
         axios.post("http://localhost:3000/api/users/add",this.form)
@@ -135,10 +137,6 @@ methods:{
             }
 
         });
-
-
-      
-        
       } 
 
 },
@@ -154,37 +152,3 @@ mounted:function(){
 } 
 
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #ffffff;
-  background-color: #182a3f;
-  min-height: 100vh;
- 
-  background-image: url(../assets/fondo.jpg);
-  background-repeat: no-repeat;
-  background-attachment:fixed;
-  background-size:cover;
-}
-
-.abs-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  min-height: 10vh;
-  
-}
-.form {
-  width: 450px;
-}
-.table{
-
-  color: #ffffff;
-
-}
-</style>

@@ -5,8 +5,6 @@ const User = require("../models/User");
     const findAllUsers = (req, res) => {
         User.find((err, users) => {
         err && res.status(500).send(err.message);
-    
-        
         res.status(200).json(users);
         });
     };
@@ -32,6 +30,7 @@ const User = require("../models/User");
       time: req.body.time,
       time1: req.body.time1,
       precio:req.body.precio,
+      date3:req.body.date3,
 
     });
  

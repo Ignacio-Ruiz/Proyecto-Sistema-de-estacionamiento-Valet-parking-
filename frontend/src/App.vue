@@ -30,11 +30,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-
+  color: #ffffff;
+  background-color: #000000;
+  min-height: 100vh;
+ 
+  background-image: url(./assets/fondo.jpg);
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
 }
-
-
 
 .abs-center {
   display: flex;

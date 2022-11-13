@@ -9,7 +9,8 @@ const UserSchema = new Schema({
   patente: { type: String },
   time: { type: String },
   time1: { type: String },
-  precio:{type:String}
+  precio:{type:String},
+  date3:{type:String}
  
   
  
