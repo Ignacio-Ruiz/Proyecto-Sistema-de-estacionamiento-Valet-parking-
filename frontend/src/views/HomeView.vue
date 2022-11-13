@@ -1,5 +1,5 @@
 <template>
-  <img src="../assets/logo2.png" alt="" width="290" height="120" />
+  <img src="../assets/logo3.png" alt="" width="390" height="120" />
   
   <div >
    <h4>
@@ -44,8 +44,7 @@
     </div>
   </div>
   <br>
-      
-      <div  >
+      <div>
        
           <button   @click='info' class="btn btn-primary" >reservar </button>
          
