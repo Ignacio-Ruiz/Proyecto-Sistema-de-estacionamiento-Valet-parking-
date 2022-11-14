@@ -55,7 +55,7 @@
         <div>
 
 <h5>
-  <span> a selecionado: {{ selected }}</span>
+  <span> A selecionado: {{ selected }}</span>
 </h5>
 
 </div>
@@ -70,16 +70,16 @@
 
         <select   v-model="selected1" class="custom-select" id="inputGroupSelect01">
     <option disabled value="">Precio a editar</option>
-    <option v-for="usuario in ListaUsuario" :key="usuario._id"> {{usuario._id}}/ hora de entrada{{usuario.time}} </option>
+    <option v-for="usuario in ListaUsuario" :key="usuario._id"> {{usuario._id}}/ Hora de entrada {{usuario.time}} </option>
    
     </select>
     <div>
       <br>
-      <button type="button"  class="btn btn-danger " @click="precio" >precio final</button>
+      <button type="button"  class="btn btn-danger " @click="precio" >Precio final:</button>
     </div>
 
       </div>
-      <label >precio final es {{preciofinal2}}</label>
+      <label >Precio final es {{preciofinal2}}</label>
 
     </form>
   </div>
