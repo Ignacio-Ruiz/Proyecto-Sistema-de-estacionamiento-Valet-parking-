@@ -18,13 +18,16 @@
 
       <div class="form-group">
         Nombre:
-        <input type="text" id="nombre" v-model="form.nombre" 
+        <input type="text" id="nombre"  
+        pattern="[a-zA-Zàáâäãå????èéêë??ìíîï??òóôöõøùúûü??ÿý??ñç?šžÀÁÂÄÃÅ?????ÈÉÊËÌÍÎÏ???ÒÓÔÖÕØÙÚÛÜ??ŸÝ??ÑßÇŒÆ?ŠŽ?ð ,.'-]{2,48}"
+         v-model="form.nombre" 
         required  placeholder="Ejemplo: Jhon" class="form-control">
       </div>
 
       <div class="form-group">
         Ingrese su apellido
-        <input type="text" id="apellido" v-model="form.apellido" required  placeholder="Ejemplo: Gonzalez" class="form-control">
+        <input type="text" id="apellido" v-model="form.apellido" required  pattern="[a-zA-Zàáâäãå????èéêë??ìíîï??òóôöõøùúûü??ÿý??ñç?šžÀÁÂÄÃÅ?????ÈÉÊËÌÍÎÏ???ÒÓÔÖÕØÙÚÛÜ??ŸÝ??ÑßÇŒÆ?ŠŽ?ð ,.'-]{2,64}"
+          placeholder="Ejemplo: Gonzalez" class="form-control">
       </div>
 
       <div class="form-group">
