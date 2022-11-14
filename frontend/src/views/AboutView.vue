@@ -90,9 +90,11 @@
 
 <script >
 
+
 import axios from 'axios';
 export default {
   
+
     name:"AboutForm",
     data(){
         return {
@@ -105,6 +107,17 @@ export default {
     },
 
     mounted:function(){
+
+
+         var sign = prompt("Ingrese contraseña");
+
+        if (sign != "1234" ) {
+
+          this.$router.push('/');
+          alert("contraseña incorrecta")
+        }
+  
+
         let direccion = "http://localhost:3000/api/users/all" ;
         axios.get(direccion).then( data =>{
           this.ListaUsuario= data.data;
