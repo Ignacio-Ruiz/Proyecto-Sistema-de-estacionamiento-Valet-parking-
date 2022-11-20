@@ -9,7 +9,7 @@
       <div class="form-group">
         usuario:
         <input type="text" id="nombre"  
-        pattern="[a-zA-Zàáâäãå????èéêë??ìíîï??òóôöõøùúûü??ÿý??ñç?šžÀÁÂÄÃÅ?????ÈÉÊËÌÍÎÏ???ÒÓÔÖÕØÙÚÛÜ??ŸÝ??ÑßÇŒÆ?ŠŽ?ð ,.'-]{2,48}"
+        pattern="[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½????ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?????ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½???ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½??ï¿½ï¿½ÇŒï¿½?ï¿½ï¿½?ï¿½ ,.'-]{2,48}"
          
         required  placeholder="Ejemplo: admin" class="form-control" v-model="nombre">
       </div>
@@ -50,7 +50,7 @@ export default {
   },
   methods:{
     login(){
-
+        
         let json={
            "Username": this.nombre,
            "password":this.pass
@@ -58,8 +58,9 @@ export default {
         
         axios.post('http://localhost:3000/api/users/autenticate', json)
         .then( data =>{
-          console.log(data.data.message)
-            if(data.data.message == "ok"){
+          console.log(data.data.token)
+
+            if(data.statusText== "OK"){
                 this.$router.push("/home");
             } 
         })

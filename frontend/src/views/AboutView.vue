@@ -1,5 +1,4 @@
 <template>
-<NavVueVue></NavVueVue>
 <h5>
   <div class="container">
   
@@ -47,6 +46,7 @@
     <option v-for="usuario in ListaUsuario" :key="usuario._id"> {{usuario._id}}/ Hora de entrada {{usuario.time}} </option>
    
     </select>
+
     <div>
       <br>
       <button type="button"  class="btn btn-danger mx-3 " @click="precio" >Sacar precio</button>
@@ -57,6 +57,21 @@
      <h5>
       <label >Precio final es {{preciofinal2}}</label>
      </h5>
+
+
+     <div class="form-group">
+        Precio
+        <input type="text" id="precio1" v-model="precioM" required 
+         class="form-control">
+      </div>
+      <div class="form-group">
+        cantidad de autos:
+        <input type="text"  id="cantidad1" v-model="canAutos" class="form-control">
+      </div>
+      <div>
+        guardar precio y cantidad de autos
+      <button type="button"  class="btn btn-danger " @click="guardar" >guardar</button>
+      </div>
  
 
     </form>
@@ -69,22 +84,21 @@
 <script >
 
 
-import NavVueVue from '@/components/NavVue.vue';
 import axios from 'axios';
 export default {
   
 
     name:"AboutForm",
-    components:{
-NavVueVue
-},
+
 
     data(){
         return {
           selected1:'',
             ListaUsuario:null,
-            preciofinal2:""
-            
+            preciofinal2:"",
+            token:"",
+            precioM:"",
+            canAutos:""
         }
     },
 
@@ -95,21 +109,29 @@ NavVueVue
         axios.get(direccion).then( data =>{
           this.ListaUsuario= data.data;
             console.log(data.data)
+            this.token = localStorage.getItem("token");
+            console.log(this.token)
             
         });
-      
+
     },
 
     methods:{
 
       eliminar(){
+        
+        console.log(this.selected1.split('/')[0]);
+       console.log(this.selected1.split('/')[1])
       
-      axios.delete("http://localhost:3000/api/users/"+this.selected1.split('/')[0])
+      axios.delete("http://localhost:3000/api/users/"+this.selected1.split('/')[0],{
+        headers: { "Access-Control-Allow-Origin": "*" },
+        params: { token: this.token }
+      })
       .then( data => {
           console.log(data);
      
       });
-      //document.location.reload();
+      document.location.reload();
 
     },
     precio(){
@@ -150,8 +172,19 @@ NavVueVue
         }
      
       });
+    },
+    guardar(){
+
+      console.log(this.precioM,this.canAutos)
+
+      axios.post("http://localhost:3000/api/users/addp",{precioM:this.precioM,canAutos:this.canAutos})
+        .then(data =>{
+        console.log(data);      
+        }) 
     }
     }
+
+     
 };
 </script>
 

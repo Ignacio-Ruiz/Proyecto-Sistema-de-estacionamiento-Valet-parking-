@@ -1,5 +1,4 @@
 <template>
-<NavVueVue></NavVueVue>
   <img src="../assets/logo3.png" alt="" width="390" height="120" />
   
   <div >
@@ -15,14 +14,14 @@
       <div class="form-group">
         Nombre:
         <input type="text" id="nombre"  
-        pattern="[a-zA-Zàáâäãå????èéêë??ìíîï??òóôöõøùúûü??ÿý??ñç?šžÀÁÂÄÃÅ?????ÈÉÊËÌÍÎÏ???ÒÓÔÖÕØÙÚÛÜ??ŸÝ??ÑßÇŒÆ?ŠŽ?ð ,.'-]{2,48}"
+        pattern="[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½????ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?????ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½???ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½??ï¿½ï¿½ÇŒï¿½?ï¿½ï¿½?ï¿½ ,.'-]{2,48}"
          v-model="form.nombre" 
         required  placeholder="Ejemplo: Jhon" class="form-control">
       </div>
 
       <div class="form-group">
         apellido
-        <input type="text" id="apellido" v-model="form.apellido" required  pattern="[a-zA-Zàáâäãå????èéêë??ìíîï??òóôöõøùúûü??ÿý??ñç?šžÀÁÂÄÃÅ?????ÈÉÊËÌÍÎÏ???ÒÓÔÖÕØÙÚÛÜ??ŸÝ??ÑßÇŒÆ?ŠŽ?ð ,.'-]{2,64}"
+        <input type="text" id="apellido" v-model="form.apellido" required  pattern="[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½????ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?????ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½???ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½??ï¿½ï¿½ÇŒï¿½?ï¿½ï¿½?ï¿½ ,.'-]{2,64}"
           placeholder="Ejemplo: Gonzalez" class="form-control">
       </div>
 
@@ -60,16 +59,13 @@
 
 <script >
 
-import NavVueVue from '@/components/NavVue.vue';
 
 import axios from 'axios'
 
 export default{
 
 name:"FormNue",
-components:{
-NavVueVue
-},
+
 
 
 
@@ -108,7 +104,7 @@ methods:{
         this.form.date3=String(date3);
         console.log(date3);      
         
-        axios.post("http://localhost:3000/api/users/add",this.form)
+        axios.post("http://localhost:3000/api/users/addp",this.form)
         .then(data =>{
         console.log(data);      
         }) 
@@ -127,8 +123,12 @@ mounted:function(){
             console.log(this.autos);            
                         
         });
+        let varr = "http://localhost:3000/api/users/var" ;
+        axios.get(varr).then( data =>{
+            console.log(data);              
+                        
+        })
 }
-
 
 }
 

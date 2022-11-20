@@ -5,7 +5,10 @@ var Users = require('../models/User2')
 const authorize = (role) =>
  function(req, res, next) {
   const token =
+
     req.body.token || req.query.token || req.headers["x-access-token"];
+
+  console.log(req.body.token);
 
 
   if (!token) {

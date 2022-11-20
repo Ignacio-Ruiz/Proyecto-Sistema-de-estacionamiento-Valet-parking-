@@ -1,8 +1,9 @@
 const UserController = require("../controllers/users");
 const express = require("express");
 const UserController2 = require("../controllers/users2");
+const UserController3 = require("../controllers/Variables");
 var authorize = require('../controllers/permisos')
-//const {verificarAuth} = require('../middlewares/autenticacion.js');
+
 
 // API routes
 const router = express.Router();
@@ -11,7 +12,7 @@ const router = express.Router();
 router.get("/all", UserController.findAllUsers);
 
 //llamar usuario por id
-router.get("/:id",authorize(['OPERADOR','ADMIN']), UserController.findById);
+router.get("/:id", UserController.findById);
 
 //aderir usuarios estacionamiento
 router.post("/add",UserController.addUser);
@@ -19,14 +20,17 @@ router.post("/add",UserController.addUser);
 //eliminar usuarios estacionamiento
 router.delete("/:id",authorize(['OPERADOR','ADMIN']), UserController.deleteUser);
 
-
 // crear nuevos operadores o admins
 router.post('/nuevo-usuario',UserController2.addUser2);
 //autenticar login 
 router.post('/autenticate',UserController2.autUser2)
-//router.get('/', UserController2.verUser3);
-//autenticar usuario
-//router.post('/autenticar',UserController2.autUser2);
+
+//aderir precio y autos
+router.post("/addp",UserController3.GuarVar);
+//
+router.get("/var", UserController3.findVar);
+router.get("/:id2", UserController3.findById);
+
 
 
 

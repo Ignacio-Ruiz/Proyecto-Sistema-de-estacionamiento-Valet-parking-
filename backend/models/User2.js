@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// Hash Contraseña
+// Hash Contraseï¿½a
 const bcrypt = require('bcrypt');
 //const saltRounds = 10;
 //const uniqueValidator = require('mongoose-unique-validator');
@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 
 const roles = {
     values: ['ADMIN', 'OPERADOR','USER'],
-    message: '{VALUE} no es un rol válido'
+    message: '{VALUE} no es un rol vï¿½lido'
   }
 
 const userSchema = new mongoose.Schema({
@@ -41,37 +41,7 @@ userSchema.pre('save', function(next) {
     });
 });
 
-
-
-// Convertir a modelo
-/*userSchema.pre('save',function(next){
-if (this.isNew || this.isModified('password')) {
-    const document=this;
-    bcrypt.hash(document.password,saltRounds,(err,HashedPassword)=>{
-        if (err) {
-            next(err);
-        }
-        else{
-            document.password = HashedPassword;
-            next();
-        }
-    })
-}
-else{
-    next();
-}
-
-});
-*/
-//userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
-
-/*userSchema.methods.toJSON = function() {
-    var obj = this.toObject();
-    delete obj.password;
-    return obj;
-   }
-*/
-//coparar contraseña encyptada
+//coparar contraseï¿½a encyptada
 
 userSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.password)
