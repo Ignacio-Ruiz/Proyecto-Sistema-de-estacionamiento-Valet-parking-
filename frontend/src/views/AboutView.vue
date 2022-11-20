@@ -1,18 +1,16 @@
 <template>
-
+<NavVueVue></NavVueVue>
 <h5>
   <div class="container">
   
   <table class="table">
 <thead>
 <tr>
-  <th scope="col">Rut</th>
+  <th scope="col">Patente</th>
   <th scope="col">Nombre</th>
   <th scope="col">Apellido</th>
-  <th scope="col">Patente</th>
   <th scope="col">Hora de entrada</th>
-  <th scope="col">Hora de salida</th>
-  <th scope="col">Precio</th>
+
 </tr>
 </thead>
 <tbody>
@@ -20,10 +18,7 @@
                         <th scope="row">{{ usuario._id}}</th>
                         <td>{{ usuario.nombre }}</td>
                         <td>{{ usuario.apellido }}</td>
-                        <td>{{ usuario.patente}}</td>
                         <td>{{ usuario.time}}</td>
-                        <td>{{ usuario.time1}}</td>
-                        <td>{{ usuario.precio}}</td>            
                     </tr>
 </tbody>
 </table>
@@ -35,37 +30,16 @@
   <div class="abs-center">  
     <form >
 
-      <div class="form-group ">
-        <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-  </div>
-  <select  v-model="selected" class="custom-select" id="inputGroupSelect01">
-    <option disabled value="">Eliminar</option>
-    <option v-for="usuario in ListaUsuario" :key="usuario._id"> {{usuario._id}}/{{usuario.nombre}}</option>
-    
-    </select>
-    <br>
-  
-      </div>
-        <button type="button"  class="btn btn-danger " @click="eliminar" >Eliminar</button>
-        
-      </div>
       <div>
         <div>
-
-<h5>
-  <span> A selecionado: {{ selected }}</span>
-</h5>
-
-</div>
+       </div>
       </div>
+      
       <div class="form-group">
-        Ingrese nueva hora de salida
-        <input type="time" id="minutos"  
-       class="form-control">
-      </div>
-
+              hora de salida
+              <input type="time" id="minutos"  
+            class="form-control">
+            </div>
       <div>
 
         <select   v-model="selected1" class="custom-select" id="inputGroupSelect01">
@@ -75,11 +49,15 @@
     </select>
     <div>
       <br>
-      <button type="button"  class="btn btn-danger " @click="precio" >Precio final:</button>
+      <button type="button"  class="btn btn-danger mx-3 " @click="precio" >Sacar precio</button>
+      <button type="button"  class="btn btn-danger " @click="eliminar" >eliminar</button>
     </div>
 
-      </div>
+     </div>
+     <h5>
       <label >Precio final es {{preciofinal2}}</label>
+     </h5>
+ 
 
     </form>
   </div>
@@ -91,15 +69,19 @@
 <script >
 
 
+import NavVueVue from '@/components/NavVue.vue';
 import axios from 'axios';
 export default {
   
 
     name:"AboutForm",
+    components:{
+NavVueVue
+},
+
     data(){
         return {
           selected1:'',
-          selected: '',
             ListaUsuario:null,
             preciofinal2:""
             
@@ -108,15 +90,6 @@ export default {
 
     mounted:function(){
 
-
-         var sign = prompt("Ingrese contraseña");
-
-        if (sign != "1234" ) {
-
-          this.$router.push('/');
-          alert("contraseña incorrecta")
-        }
-  
 
         let direccion = "http://localhost:3000/api/users/all" ;
         axios.get(direccion).then( data =>{
@@ -131,12 +104,12 @@ export default {
 
       eliminar(){
       
-      axios.delete("http://localhost:3000/api/users/"+this.selected.split('/')[0])
+      axios.delete("http://localhost:3000/api/users/"+this.selected1.split('/')[0])
       .then( data => {
           console.log(data);
      
       });
-      document.location.reload();
+      //document.location.reload();
 
     },
     precio(){
