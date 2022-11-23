@@ -116,18 +116,15 @@ methods:{
 
 },
 mounted:function(){
-        let direccion = "http://localhost:3000/api/users/all" ;
+        let direccion = "http://localhost:3000/api/vars/all" ;
         axios.get(direccion).then( data =>{
-            console.log(data);     
+            console.log(data);  
+            var string=data.data
+              
             this.autos=data.data.length; 
-            console.log(this.autos);            
+            console.log(string);            
                         
         });
-        let varr = "http://localhost:3000/api/users/var" ;
-        axios.get(varr).then( data =>{
-            console.log(data);              
-                        
-        })
 }
 
 }

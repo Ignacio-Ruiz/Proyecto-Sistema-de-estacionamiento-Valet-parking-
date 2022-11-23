@@ -172,15 +172,6 @@ export default {
         }
      
       });
-    },
-    guardar(){
-
-      console.log(this.precioM,this.canAutos)
-
-      axios.post("http://localhost:3000/api/users/addp",{precioM:this.precioM,canAutos:this.canAutos})
-        .then(data =>{
-        console.log(data);      
-        }) 
     }
     }
 

@@ -18,6 +18,7 @@ const authorize = (role) =>
     const decoded = jwt.verify(token,'secret', process.env.JWT_KEY);
     console.log(decoded)
     if(role.length > 0){
+      
       Users.findOne({Username: decoded.Username})
         .then((user) => {
           let allowed = false 

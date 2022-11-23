@@ -1,21 +1,50 @@
 const mongoose = require("mongoose");
-const Var = require('../models/Variables');
+const Vars = require('../models/Var');
 
-const User = require("../models/User");
-
-
-const GuarVar =(req,res)=>{
-
-    let edit = new Var({
-        precioM : req.body.precioM,
-        canAutos : req.body.canAutos
+const findAllVars = (req, res) => {
+    Vars.find((err, users) => {
+    err && res.status(500).send(err.message);
+    res.status(200).json(users);
     });
+};
+
+
+const addVar= (req, res) => {
+
+    console.log(req.body)
+
+    let Var = new Vars({
+
+    precioM: req.body.precioM,
+    cantidadAutos: req.body.cantidadAutos,
+
+    });
+
+    console.log("este es var"+Var)
  
-    edit.save((err, usr) => {
+    Var.save((err, usr) => {
         err && res.status(500).send(err.message);
         res.status(200).json(usr);
       });
 
-}
-    
-module.exports = {GuarVar};
+    }
+
+    const editVar= (req, res) =>{
+        let id =req.params.id;
+        try {
+
+            let usuarioDB = Vars.findByIdAndUpdate(id, req.body);
+            res.status(200).send(usuarioDB);
+            
+        } catch (error) {
+
+            res.status(500).send(usuarioDB);
+         
+            
+        }
+
+    }
+
+
+  
+module.exports = { addVar,findAllVars,editVar};

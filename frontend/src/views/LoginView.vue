@@ -50,7 +50,6 @@ export default {
   },
   methods:{
     login(){
-        
         let json={
            "Username": this.nombre,
            "password":this.pass

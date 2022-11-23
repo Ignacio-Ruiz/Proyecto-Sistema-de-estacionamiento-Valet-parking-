@@ -1,7 +1,6 @@
 const UserController = require("../controllers/users");
 const express = require("express");
 const UserController2 = require("../controllers/users2");
-const UserController3 = require("../controllers/Variables");
 var authorize = require('../controllers/permisos')
 
 
@@ -26,11 +25,6 @@ router.post('/nuevo-usuario',UserController2.addUser2);
 router.post('/autenticate',UserController2.autUser2)
 
 //aderir precio y autos
-router.post("/addp",UserController3.GuarVar);
-//
-router.get("/var", UserController3.findVar);
-router.get("/:id2", UserController3.findById);
-
 
 
 

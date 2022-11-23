@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var logger = require('morgan');
 var cors = require('cors')
 const Users= require("./api/users");
+const Vars = require("./api/var")
 const mongoose = require('mongoose');
 
 
@@ -30,5 +31,6 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users', Users);
+app.use('/api/vars', Vars);
 
 module.exports = app;
