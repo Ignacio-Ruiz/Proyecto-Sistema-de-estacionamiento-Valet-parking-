@@ -29,22 +29,23 @@ const addVar= (req, res) => {
 
     }
 
-    const editVar= (req, res) =>{
-        let id =req.params.id;
-        try {
+    function editVar (req, res){
+        let id = req.params.id;
+        let body = req.body;
+        console.log(id)
+      
+       
+          // {new:true} nos devuelve el usuario actualizado
+        Vars.findOneAndUpdate(id, body, function(err,vari){
 
-            let usuarioDB = Vars.findByIdAndUpdate(id, req.body);
-            res.status(200).send(usuarioDB);
-            
-        } catch (error) {
-
-            res.status(500).send(usuarioDB);
-         
-            
-        }
-
+            if(err){
+                res.status(500).send({message: 'Error 500'});
+            }else{
+                res.status(200).send(vari);	
+            }
+        });
     }
-
+    
 
   
 module.exports = { addVar,findAllVars,editVar};

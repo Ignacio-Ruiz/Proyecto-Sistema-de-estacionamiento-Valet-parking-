@@ -18,8 +18,7 @@ router.post("/add",UserController.addUser);
 
 //eliminar usuarios estacionamiento
 router.delete("/:id",authorize(['OPERADOR','ADMIN']), UserController.deleteUser);
-
-// crear nuevos operadores o admins
+//solo agregar operarios o admin para postman
 router.post('/nuevo-usuario',UserController2.addUser2);
 //autenticar login 
 router.post('/autenticate',UserController2.autUser2)

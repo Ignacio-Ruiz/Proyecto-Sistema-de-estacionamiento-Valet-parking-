@@ -4,7 +4,7 @@ const User2 = require("../models/User2");
 var jwt = require('jsonwebtoken')
 ;
 
-// Hash Contraseña
+// Hash Contraseï¿½a
 
 const addUser2= (req, res) => {
   
@@ -36,7 +36,7 @@ const addUser2= (req, res) => {
 
               const token = jwt.sign({
                 Username: user.Username, user_id: user._id, role: user.role,
-              }, 'secret',process.env.JWT_KEY, { expiresIn: "7d"}) // Expira en 30 días
+              }, 'secret',process.env.JWT_KEY, { expiresIn: "7d"}) // Expira en 30 dï¿½as
               user.token = token
               return res.status(200).json({
                 Username: user.Username, user_id: user._id, role: user.role,

@@ -3,7 +3,7 @@
   
   <div >
    <h4>
-      <label> Espacios que quedan:{{Math.abs(autos-10)}}</label>
+      <label> Espacios que quedan:{{cantidadAutos-autos2}}</label>
   </h4>
   </div>
 
@@ -51,8 +51,6 @@
 </div><br />
 
 
-
-
 </template>
 
 
@@ -60,7 +58,11 @@
 <script >
 
 
+
 import axios from 'axios'
+import { ref } from 'vue';
+
+
 
 export default{
 
@@ -71,8 +73,8 @@ name:"FormNue",
 
 data:function(){
     return { 
-      
-      autos:'',
+      cantidadAutos: ref(10),
+      autos2:'',
         form:{
 
         }
@@ -81,51 +83,58 @@ data:function(){
 methods:{
 
     info(){
-      let direccion = "http://localhost:3000/api/users/all" ;
-        axios.get(direccion).then( data =>{
-            console.log(data.data);
-            console.log('el largo es '+data.data.length);
+      
             //cuenta el array de datos
-            if (data.data.length>=10) {
+            if ((this.cantidadAutos-this.autos2) <= 0) {
 
               alert("El estacionamiento esta lleno");
               
             }
             else{
-
+        
+              
         var input1 = document.getElementById('time1');
-   
         var date1 = input1.valueAsDate;
-       
-
         var date3=date1;
         console.log(date3);
 
         this.form.date3=String(date3);
         console.log(date3);      
         
-        axios.post("http://localhost:3000/api/users/addp",this.form)
+        axios.post("http://localhost:3000/api/users/add",this.form)
         .then(data =>{
         console.log(data);      
         }) 
 
             }
 
-        });
+        
       } 
 
 },
 mounted:function(){
         let direccion = "http://localhost:3000/api/vars/all" ;
-        axios.get(direccion).then( data =>{
-            console.log(data);  
-            var string=data.data
-              
-            this.autos=data.data.length; 
-            console.log(string);            
+        axios.get(direccion).then( response=>{
+            console.log(response.data);
+            this.autos=response.data
+            let asd = response.data;
+            console.log(asd[0].cantidadAutos)
+            this.cantidadAutos=asd[0].cantidadAutos
+            
+            
+          
+                                
+                });
+
+        let asd = "http://localhost:3000/api/users/all" ;
+        axios.get(asd).then( data =>{
+            console.log(data.data);     
+            this.autos2=data.data.length; 
+            console.log(this.autos2);            
                         
         });
-}
+        } 
+        
 
 }
 

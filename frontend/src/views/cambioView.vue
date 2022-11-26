@@ -1,35 +1,50 @@
 <template>
 <div>
     <form> 
-
-        <container class="container">
-
-
+      
+            
             <div class="abs-center">
+              <div class="form-group">
 
+
+                <div class="form-group">
+                Precio
+                <input type="number"  v-model="precioM"  min="1"
+                class="form-control">
+
+                <label  >precio actual {{precio}}</label>
+                </div>
+
+                <div class="form-group">
+                Cantidad de autos
+                <input type="number"  v-model="cantidadAutos"  min="1"
+                class="form-control">
+                <label  >cantidad de autos actual {{cantidad}}</label>
+                </div>
+
+                <div class="form-group">
+                Editar Precio
+                <input type="number"  v-model="EdprecioM"  min="1" max="9999999999"
+                class="form-control">
+                </div>
+
+                <div class="form-group">
+                Editar Cantidad de autos
+                <input type="number"  v-model="EdcantidadAutos"  min="1" max="999999999"
+                class="form-control">
+                </div>
                 
-            <div class="form-group">
-        Precio
-        <input type="text" id="precio1" v-model="precioM" required 
-         class="form-control">
-      </div>
-      <div class="form-group">
-        cantidad de autos:
-        <input type="text"  id="cantidad1" v-model="cantidadAutos" class="form-control">
-      </div>
-      <div>
-        guardar precio y cantidad de autos
-      <button type="button"  class="btn btn-danger " @click="guardar" >guardar</button>
-      </div>
+                <div>
+                    <button type="button"  class="btn btn-danger mx-3 " @click="guardar" >guardar</button>
 
-            </div>
+                    <button type="button"  class="btn btn-danger " @click="editar" >editar </button>
+              
+                </div>
+                
+              </div>
+  
+             </div>
 
-
-
-        </container>
-
-
- 
 
     </form>
   </div>
@@ -39,31 +54,70 @@
 
 <script>
 import axios from 'axios';
+import { ref } from 'vue';
 
 export default{
     name:"cambioVar",
     data(){
         return {
             precioM:"",
-            cantidadAutos:""
+            cantidadAutos:"",
+            EdprecioM:ref(this.precioM),
+            EdcantidadAutos:ref(this.cantidadAutos),
+            listaAutos:"",
+            largo:"",
+            ids:"",
+            precio:"",
+            cantidad:""
         }
     },
     methods:{
 
         guardar(){
 
-console.log(this.precioM,this.cantidadAutos)
+          console.log(this.largo)
 
-axios.post("http://localhost:3000/api/vars/add",{precioM:this.precioM,cantidadAutos:this.cantidadAutos})
-  .then(data =>{
-  console.log(data);      
-  }) 
+          if (this.largo>=1) {
+            alert("no puede agregar mas")
+          }
+          else{
+
+          console.log(this.precioM,this.cantidadAutos)
+
+          axios.post("http://localhost:3000/api/vars/add",{precioM:this.precioM,cantidadAutos:this.cantidadAutos})
+            .then(data =>{
+            console.log(data);
+              
+            })
+            
+            document.location.reload();
+          }
+          },
+          editar(){
+            axios.put("http://localhost:3000/api/vars/"+this.ids,{precioM:this.EdprecioM,cantidadAutos:this.EdcantidadAutos})
+            .then(data =>{
+              console.log(data);
+
+            }) 
+            document.location.reload();
+          
+          }
+
+
+},
+
+mounted:function(){
+        
+        let direccion = "http://localhost:3000/api/vars/all" ;
+        axios.get(direccion).then( response=>{
+            console.log(response.data);
+            this.largo=response.data.length;
+            this.listaAutos=response.data
+            let asd = response.data;
+            this.ids=asd[0]._id;
+            this.precio=asd[0].precioM;   
+            this.cantidad=asd[0].cantidadAutos;              
+                });
 }
-    }
-
-
-
-
 }
-
 </script>

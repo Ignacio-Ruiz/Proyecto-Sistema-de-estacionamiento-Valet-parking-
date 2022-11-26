@@ -60,7 +60,8 @@ export default {
           console.log(data.data.token)
 
             if(data.statusText== "OK"){
-                this.$router.push("/home");
+              localStorage.token = data.data.token;
+                this.$router.push("/about");
             } 
         })
     }
