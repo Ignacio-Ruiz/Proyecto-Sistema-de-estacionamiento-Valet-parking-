@@ -68,7 +68,8 @@ export default{
             largo:"",
             ids:"",
             precio:"",
-            cantidad:""
+            cantidad:"",
+            token:""
         }
     },
     methods:{
@@ -84,7 +85,8 @@ export default{
 
           console.log(this.precioM,this.cantidadAutos)
 
-          axios.post("http://localhost:3000/api/vars/add",{precioM:this.precioM,cantidadAutos:this.cantidadAutos})
+          axios.post("http://localhost:3000/api/vars/add",{precioM:this.precioM,cantidadAutos:this.cantidadAutos,token: this.token 
+      })
             .then(data =>{
             console.log(data);
               
@@ -94,19 +96,24 @@ export default{
           }
           },
           editar(){
-            axios.put("http://localhost:3000/api/vars/"+this.ids,{precioM:this.EdprecioM,cantidadAutos:this.EdcantidadAutos})
+
+            console.log(this.token)
+            axios.put("http://localhost:3000/api/vars/"+this.ids,{precioM:this.EdprecioM,cantidadAutos:this.EdcantidadAutos,
+            token:this.token })
             .then(data =>{
               console.log(data);
 
-            }) 
             document.location.reload();
           
+            })
           }
 
 
 },
 
 mounted:function(){
+  this.token = localStorage.getItem("token");
+            console.log(this.token) 
         
         let direccion = "http://localhost:3000/api/vars/all" ;
         axios.get(direccion).then( response=>{
@@ -116,7 +123,8 @@ mounted:function(){
             let asd = response.data;
             this.ids=asd[0]._id;
             this.precio=asd[0].precioM;   
-            this.cantidad=asd[0].cantidadAutos;              
+            this.cantidad=asd[0].cantidadAutos; 
+                        
                 });
 }
 }

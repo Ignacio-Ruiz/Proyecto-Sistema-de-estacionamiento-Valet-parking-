@@ -90,13 +90,15 @@ export default {
 
     mounted:function(){
 
+      this.token = localStorage.getItem("token");
+            console.log(this.token)
+
 
         let direccion = "http://localhost:3000/api/users/all" ;
         axios.get(direccion).then( data =>{
           this.ListaUsuario= data.data;
             console.log(data.data)
-            this.token = localStorage.getItem("token");
-            console.log(this.token)
+            
             
         });
 
