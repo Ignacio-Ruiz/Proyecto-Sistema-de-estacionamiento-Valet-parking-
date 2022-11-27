@@ -52,9 +52,6 @@
   min-height: 10vh;
   
 }
-.form {
-  width: 450px;
-}
 .table{
 
   color: #ffffff;

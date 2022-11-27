@@ -23,7 +23,6 @@ router.post('/nuevo-usuario',UserController2.addUser2);
 //autenticar login 
 router.post('/autenticate',UserController2.autUser2)
 
-//aderir precio y autos
 
 
 

@@ -4,8 +4,8 @@ const User2 = require("../models/User2");
 var jwt = require('jsonwebtoken')
 ;
 
-// Hash Contrase�a
 
+//adherir nuevo usuario admin u operario
 const addUser2= (req, res) => {
   
     let user2 = new User2({
@@ -23,7 +23,7 @@ const addUser2= (req, res) => {
 
     }
 
-
+//autenticar y crear token 
           const autUser2= (req, res) => {
 
             console.log(req.body)
@@ -36,7 +36,7 @@ const addUser2= (req, res) => {
 
               const token = jwt.sign({
                 Username: user.Username, user_id: user._id, role: user.role,
-              }, 'secret',process.env.JWT_KEY, { expiresIn: "7d"}) // Expira en 30 d�as
+              }, 'secret',process.env.JWT_KEY, { expiresIn: "7d"}) // Expira en 7 d�as
               user.token = token
               return res.status(200).json({
                 Username: user.Username, user_id: user._id, role: user.role,

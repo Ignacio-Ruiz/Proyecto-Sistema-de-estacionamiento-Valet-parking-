@@ -84,7 +84,7 @@ methods:{
 
     info(){
       
-            //cuenta el array de datos
+           
             if ((this.cantidadAutos-this.autos2) <= 0) {
 
               alert("El estacionamiento esta lleno");

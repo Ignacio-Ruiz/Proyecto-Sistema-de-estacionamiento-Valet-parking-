@@ -7,7 +7,9 @@ const router = express.Router();
 
 
 router.get("/all", ProfileController3.findAllVars);
+//agregar precio y cantidad de autos
 router.post("/add",authorize(['ADMIN']),ProfileController3.addVar);
-router.put("/:id",authorize(['ADMIN']),ProfileController3.editVar)
+//editar precio y cantidad de autos
+router.put("/:id",authorize(['ADMIN']),ProfileController3.editVar);
 
 module.exports = router;

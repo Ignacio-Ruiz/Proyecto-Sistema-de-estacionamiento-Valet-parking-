@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Vars = require('../models/Var');
 
+
+// buscar todas las variables
 const findAllVars = (req, res) => {
     Vars.find((err, users) => {
     err && res.status(500).send(err.message);
@@ -8,7 +10,7 @@ const findAllVars = (req, res) => {
     });
 };
 
-
+// adherir variables
 const addVar= (req, res) => {
 
     console.log(req.body)
@@ -28,14 +30,12 @@ const addVar= (req, res) => {
       });
 
     }
-
+//editar variables
     function editVar (req, res){
         let id = req.params.id;
         let body = req.body;
-        console.log(id)
+    
       
-       
-          // {new:true} nos devuelve el usuario actualizado
         Vars.findOneAndUpdate(id, body, function(err,vari){
 
             if(err){
