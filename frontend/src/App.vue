@@ -14,9 +14,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/#login">login</a>
         </li>
-        <li class="nav-item">
+        <div v-if="this.rols==='ADMIN'">
+          <li class="nav-item" >
           <a class="nav-link" href="/#cambio">cambios admin</a>
         </li>
+        </div>
      
       </ul>
     </div>
@@ -27,6 +29,33 @@
 
   <router-view/>
 </template>
+
+
+
+
+
+<script>
+
+
+export default{
+  name:"AppVue",
+
+
+data(){
+    return {
+    rols:""
+        
+    }
+},
+mounted:function(){
+
+  this.rols = localStorage.getItem("roles");
+        console.log(this.rols)
+
+}
+
+}
+</script>
 
 <style>
 #app {

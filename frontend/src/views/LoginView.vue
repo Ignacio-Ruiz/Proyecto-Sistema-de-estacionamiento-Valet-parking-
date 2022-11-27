@@ -15,7 +15,7 @@
       </div>
 
       <div class="form-group">
-        contrasena
+        contraseña
         <input type="text" id="pass"  required v-model="pass"
           class="form-control">
       </div>
@@ -57,12 +57,19 @@ export default {
         
         axios.post('http://localhost:3000/api/users/autenticate', json)
         .then( data =>{
-          console.log(data.data.token)
+          console.log(data.data.role)
 
-            if(data.statusText== "OK"){
+            if(data.data.role== "ADMIN"){
+             
+              localStorage.token = data.data.token;
+              localStorage.roles=data.data.role;
+              this.$router.push("/cambio");
+            }
+            if(data.data.role== "OPERADOR"){
               localStorage.token = data.data.token;
                 this.$router.push("/about");
-            } 
+            }
+            
         })
     }
   }

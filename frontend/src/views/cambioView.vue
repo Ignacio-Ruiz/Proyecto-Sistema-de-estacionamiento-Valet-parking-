@@ -112,6 +112,7 @@ export default{
 },
 
 mounted:function(){
+ 
   this.token = localStorage.getItem("token");
             console.log(this.token) 
         
@@ -124,6 +125,7 @@ mounted:function(){
             this.ids=asd[0]._id;
             this.precio=asd[0].precioM;   
             this.cantidad=asd[0].cantidadAutos; 
+            
                         
                 });
 }
