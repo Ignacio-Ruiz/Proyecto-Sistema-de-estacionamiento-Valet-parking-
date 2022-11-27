@@ -67,8 +67,8 @@ export default{
             listaAutos:"",
             largo:"",
             ids:"",
-            precio:"",
-            cantidad:"",
+            precio:ref("debe agregar precio"),
+            cantidad:ref("debe agregar cantidad"),
             token:""
         }
     },
