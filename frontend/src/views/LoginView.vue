@@ -1,4 +1,6 @@
 <template>
+
+  <HederViewVue></HederViewVue>
 <div class="wrapper">
   <img src="../assets/logo3.png" alt="" width="390" height="120" />
   <br>
@@ -36,9 +38,14 @@
 <script>
 
 import axios from 'axios'
+import HederViewVue from '@/components/HederView.vue'
 
 export default {
   name: 'LoginView',
+
+  components:{
+  HederViewVue
+},
   data: function(){
     return {
       nombre: "",
@@ -63,7 +70,9 @@ export default {
              
               localStorage.token = data.data.token;
               localStorage.roles=data.data.role;
-              this.$router.push("/cambio");
+              this.$router.replace("/cambio");
+              
+             
             }
             if(data.data.role== "OPERADOR"){
               localStorage.token = data.data.token;

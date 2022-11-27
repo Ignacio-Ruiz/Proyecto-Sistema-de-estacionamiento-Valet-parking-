@@ -1,4 +1,5 @@
 <template>
+  <HederViewVue></HederViewVue>
 <div>
     <form> 
       
@@ -53,11 +54,16 @@
 
 
 <script>
+import HederViewVue from '@/components/HederView.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 
 export default{
     name:"cambioVar",
+
+  components:{
+  HederViewVue
+  },
     data(){
         return {
             precioM:"",

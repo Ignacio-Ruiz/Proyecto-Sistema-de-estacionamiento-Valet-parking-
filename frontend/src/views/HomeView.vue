@@ -1,4 +1,7 @@
 <template>
+
+<HederViewVue></HederViewVue>
+
   <img src="../assets/logo3.png" alt="" width="390" height="120" />
   
   <div >
@@ -57,7 +60,7 @@
 
 <script >
 
-
+import HederViewVue from '@/components/HederView.vue';
 
 import axios from 'axios'
 import { ref } from 'vue';
@@ -67,6 +70,9 @@ import { ref } from 'vue';
 export default{
 
 name:"FormNue",
+components:{
+  HederViewVue
+},
 
 
 

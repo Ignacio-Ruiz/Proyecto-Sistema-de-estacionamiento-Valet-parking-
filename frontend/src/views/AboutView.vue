@@ -1,4 +1,5 @@
 <template>
+  <HederViewVue></HederViewVue>
 <h5>
   <div class="container">
   
@@ -68,13 +69,16 @@
 
 <script >
 
-
+import HederViewVue from '@/components/HederView.vue';
 import axios from 'axios';
 import { ref } from 'vue';
 export default {
   
 
     name:"AboutForm",
+    components:{
+  HederViewVue
+},
 
 
     data(){
