@@ -30,6 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//rutas
 app.use('/api/users', Users);
 app.use('/api/vars', Vars);
 

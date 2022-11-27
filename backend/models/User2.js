@@ -1,20 +1,18 @@
 const mongoose = require("mongoose");
 
-// Hash Contrase�a
 const bcrypt = require('bcrypt');
-//const saltRounds = 10;
-//const uniqueValidator = require('mongoose-unique-validator');
+
 
 
 const roles = {
-    values: ['ADMIN', 'OPERADOR','USER'],
+    values: ['ADMIN', 'OPERADOR'],
     message: '{VALUE} no es un rol v�lido'
   }
 
 const userSchema = new mongoose.Schema({
   Username:   { type: String,unique: true, required : [true, 'El nombre es necesario'] },
   password: { type: String, required: [true, 'Pass es necesario'] },
-  role: { type: [String], default: 'USER', enum: roles ,required: [true, 'Roles are mandatory']},
+  role: { type: [String], default: 'OPERADOR', enum: roles ,required: [true, 'Roles are mandatory']},
   token: {type: String,required: [false, 'Session token is not mandatory'],default: '' },
 
   
