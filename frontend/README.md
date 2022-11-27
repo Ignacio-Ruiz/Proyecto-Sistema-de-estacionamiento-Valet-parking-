@@ -10,6 +10,8 @@ npm install
 npm run serve
 ```
 
+
+//innecesario
 ### Compiles and minifies for production
 ```
 npm run build
